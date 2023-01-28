@@ -6,51 +6,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Милые котики</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <script src="script/cats.js"></script>
+    <script src="https://kit.fontawesome.com/3e2b3d0dcf.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="./css/index.css">
     <script src="script/api.js"></script>
 </head>
 
-<body>
-    <header>
-        <a href="" class="logo">
-            <i class="fa-solid fa-paw"></i>
-            Милые котики
-        </a>
-        <a class="btn" href="" id="add">
-            <i class="fa-regular fa-plus"></i>
-        </a>
+<body class="page">
+    <header class="header">
+        <div class="container header__container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-paw fa-2x"></i>
+                Милые котики
+            </a>
+            <button class="btn" id="add">
+                <i class="fa-regular fa-plus"></i>
+            </button>
+            <button class="btn" id="authoriz">
+                <i class="fa-sharp fa-solid fa-circle-user"></i>
+                Авторизация
+            </button>
+        </div>
     </header>
-    <main></main>
-    <footer>
-        <span>©2023 Made by Alexey Martynenko</span>
-        <nav>
-            <a href=""><i class="fa-brands fa-github"></i></a>
-            <a href=""><i class="fa-brands fa-vk"></i></a>
-            <a href=""><i class="fa-brands fa-telegram"></i></a>
-        </nav>
+    <main class="main container">
+        <section class="cards"></section>
+    </main>
+    <footer class="footer">
+        <div class="container footer__container">
+            <span class="copyright">©2023 Made by Alexey Martynenko</span>
+            <nav class="socials">
+                <a href="#" class="socials__link">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="#" class="socials__link">
+                    <i class="fa-brands fa-vk"></i>
+                </a>
+                <a href="#" class="socials__link">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+            </nav>
+        </div>
     </footer>
-    <div class="popup-wrapper">
-        <div class="popup" id="popup-form">
-            <div class="popup-close btn"><i class="fa-solid fa-xmark"></i></div>
+    <div class="popup popup-add-cats">
+        <div class="popup__container">
+            <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
             <h2>Добавить питомца</h2>
-            <form action="">
-                <div class="form-img"></div>
-                <input type="number" name="id" min="1" required placeholder="id">
-                <input type="number" name="age" placeholder="Возраст">
-                <input type="text" name="name" required placeholder="Имя">
-                <input type="number" name="rate" placeholder="Рейтинг (0-10)" min="0" max="10">
-                <textarea name="description" placeholder="Описание"></textarea>
-                <label>Любимчик <input type="checkbox" name="favourite" placeholder=""></label>
-                <input type="text" name="img_link" placeholder="Ссылка на фото">
-                <button type="submit">Добавить котика</button>
+            <form class="form" id="popup-form-cat">
+                <div class="form__image"></div>
+                <input type="number" class="form__input" name="id" min="1" required placeholder="id">
+                <input type="number" class="form__input" name="age" placeholder="Возраст">
+                <input type="text" class="form__input" name="name" required placeholder="Имя">
+                <input type="number" class="form__input" name="rate" placeholder="Рейтинг (0-10)" min="0" max="10">
+                <textarea name="description" class="form__input form__textarea" placeholder="Описание"></textarea>
+                <label class="form__checkbox-wrap">
+                    <input type="checkbox" name="favourite" class="form__checkbox " placeholder="">
+                    <span class="form__label">Любимчик</span>
+                    <span class="form__fake-checkbox"><i class="fa-regular fa-circle-check"></i></span>
+                </label>
+                <input type="url" class="form__input form__input_image" name="img_link" placeholder="Ссылка на фото">
+                <button type="submit" class="form__btn btn">Добавить котика</button>
             </form>
         </div>
-    </div>
-    <script src="script/index.js"></script>
+        <template id="card-template">
+            <div class="card">
+                <img src="./assets/images/cat.jpg" alt="Image" class="card__image" />
+                <a class="card__link">
+                    <h3 class="card__name">Pikachu</h3>
+                </a>
+                <button class="card__like" aria-label="Поставить лайк">
+                    <i class="fa-solid fa-heart fa-2x"></i>
+                </button>
+            </div>
+        </template>
+
+        <!-- <div class="popup" id="popup-form">
+        <div class="popup-close btn"><i class="fa-solid fa-xmark"></i></div>
+        <h2>Добавить питомца</h2>
+        <form action="">
+            <div class="form-img"></div>
+            <input type="number" name="id" min="1" required placeholder="id">
+            <input type="number" name="age" placeholder="Возраст">
+            <input type="text" name="name" required placeholder="Имя">
+            <input type="number" name="rate" placeholder="Рейтинг #(-10)" min="0" max="10">
+            <textarea name="description" placeholder="Описание"></textarea>
+            <label>Любимчик <input type="checkbox" name="favourite" placeholder=""></label>
+            <input type="text" name="img_link" placeholder="Ссылка на фото">
+            <button type="submit">Добавить котика</button>
+        </form>
+    </div> -->
+
+        <script src="script/cats.js"></script>
+        <script src="script/popup.js"></script>
+        <script src="script/card.js"></script>
+        <script src="script/index.js"></script>
 </body>
 
 </html>
