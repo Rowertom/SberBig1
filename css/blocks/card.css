@@ -65,3 +65,16 @@
 .card:hover::before {
     backdrop-filter: blur(0);
 }
+
+.card__delete {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    color: var( --accent-color);
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+  }

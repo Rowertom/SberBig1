@@ -8,7 +8,6 @@
     <title>Милые котики</title>
     <script src="https://kit.fontawesome.com/3e2b3d0dcf.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="./css/index.css">
-    <script src="script/api.js"></script>
 </head>
 
 <body class="page">
@@ -48,7 +47,7 @@
     </footer>
     <div class="popup popup-add-cats">
         <div class="popup__container">
-            <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
+            <button class="popup__close btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
             <h2>Добавить питомца</h2>
             <form class="form" id="popup-form-cat">
                 <div class="form__image"></div>
@@ -66,38 +65,61 @@
                 <button type="submit" class="form__btn btn">Добавить котика</button>
             </form>
         </div>
-        <template id="card-template">
-            <div class="card">
-                <img src="./assets/images/cat.jpg" alt="Image" class="card__image" />
-                <a class="card__link">
-                    <h3 class="card__name">Pikachu</h3>
-                </a>
-                <button class="card__like" aria-label="Поставить лайк">
-                    <i class="fa-solid fa-heart fa-2x"></i>
-                </button>
-            </div>
-        </template>
-
-        <!-- <div class="popup" id="popup-form">
-        <div class="popup-close btn"><i class="fa-solid fa-xmark"></i></div>
-        <h2>Добавить питомца</h2>
-        <form action="">
-            <div class="form-img"></div>
-            <input type="number" name="id" min="1" required placeholder="id">
-            <input type="number" name="age" placeholder="Возраст">
-            <input type="text" name="name" required placeholder="Имя">
-            <input type="number" name="rate" placeholder="Рейтинг #(-10)" min="0" max="10">
-            <textarea name="description" placeholder="Описание"></textarea>
-            <label>Любимчик <input type="checkbox" name="favourite" placeholder=""></label>
-            <input type="text" name="img_link" placeholder="Ссылка на фото">
-            <button type="submit">Добавить котика</button>
-        </form>
-    </div> -->
-
-        <script src="script/cats.js"></script>
-        <script src="script/popup.js"></script>
-        <script src="script/card.js"></script>
-        <script src="script/index.js"></script>
+    </div>
+    <div class="popup popup-edit-cats">
+        <div class="popup__container" >
+            <button class="popup__close btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <h2>Изменить данные питомца</h2>
+            <form class="form" id="popup-form-edit">
+                <div class="form__image"></div>
+                <input type="number" class="form__input" name="id" min="1" required placeholder="id">
+                <input type="number" class="form__input" name="age" placeholder="Возраст">
+                <input type="text" class="form__input" name="name" required placeholder="Имя">
+                <input type="number" class="form__input" name="rate" placeholder="Рейтинг (0-10)" min="0" max="10">
+                <textarea name="description" class="form__input form__textarea" placeholder="Описание"></textarea>
+                <label class="form__checkbox-wrap">
+                    <input type="checkbox" name="favorite" class="form__checkbox " placeholder="">
+                    <span class="form__label">Любимчик</span>  
+                    <span class="form__fake-checkbox"><i class="fa-regular fa-circle-check"></i></span>
+                </label>
+                <input type="url" class="form__input form__input_image" name="image" placeholder="Ссылка на фото">
+                <button type="submit" class="form__btn btn">Отправить</button>
+            </form>
+        </div>
+    </div>
 </body>
+<template id="card-template">
+    <div class="card">
+        <img src="./assets/images/cat.jpg" alt="Image" class="card__image"/>
+        <a class="card__link">
+            <h3 class="card__name">Pikachu</h3>
+        </a>
+        <button class="card__delete" id="card-delete" aria-label="delete"><i class="fa-solid fa-trash"></i>
+        </button>
+        <button class="card__like" aria-label="Поставить лайк">
+            <i class="fa-solid fa-heart fa-2x"></i>
+        </button>
+    </div>
+</template>
+<template id="cats-info-template">
+    <div class="cat-info">
+        <button class="cat-info__edited"><i class="fa-regular fa-pen-to-square"></i>Редактировать</button>
+        <button class="cat-info__saved cat-info__saved_hidden"><i class="fa-regular fa-pen-to-square"></i>Сохранить</button>
+        <button class="cat-info__deleted"><i class="fa-solid fa-trash"></i>Удалить</button>
+        <img src="#" class="cat-info__image" loading="lazy">
+        <span class="cat-info__id"></span>
+        <div class="cat-info__title">
+            <h2 class="cat-info__name"></h2>
+            <button class="cat-info__favourite"><i class="fa-solid fa-heart fa-2x"></i></button>
+        </div>
+        <span class="cat-info__rate"></span>
+        <div class="cat-info__age">
+            <span class="cat-info__age-val"></span>
+            <span class="cat-info__age-text"></span>
+        </div>
+        <p class="cat-info__desc"></p>
+    </div>
+</template>
+<script src="./script/index.js" defer type="module"></script>
 
 </html>

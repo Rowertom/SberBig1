@@ -1,40 +1,54 @@
+const configApi = {
+  url: "https://sb-cats.herokuapp.com/api/2/martynenko_alexey",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+};
+
+
 class Api {
-    constructor(name) {
-      this.url = "https://sb-cats.herokuapp.com/api/2/";
-      this.name = name;
-    }
-    getCats() {
-      return fetch(`${this.url}${this.name}/show`);
-    }
-    getCat(id) {
-      return fetch(`${this.url}${this.name}/show/${id}`);
-    }
-    getIds() {
-      return fetch(`${this.url}${this.name}/ids`);
-    }
-    addCat(body) {
-      return fetch(`${this.url}${this.name}/add`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-    }
-    updCat(id, body) {
-      return fetch(`${this.url}${this.name}/update/${id}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-    }
-    delCat(id) {
-      return fetch(`${this.url}${this.name}/delete/${id}`, {
-        method: "DELETE",
-      });
-    }
+  constructor(config) {
+    this._url = config.url;
+    this._headers = config.headers;
   }
+  _onResponse(res) {
+    return res.ok ? res.json() : Promise.reject({ ...res, message: 'error' });
+  }
+  getCats() {
+    return fetch(`${this._url}/show`, {
+      method: "GET",
+    }).then(this._onResponse);
+  }
+  getCat(id) {
+    return fetch(`${this._url}/show/${id}`, {
+      method: 'GET',
+    }).then(this._onResponse);
+  }
+  getIds() {
+    return fetch(`${this._url}/show/ids`, {
+      method: "GET",
+    }).then(this._onResponse);
+  }
+  addCat(body) {
+    return fetch(`${this._url}/add`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify(body),
+    }).then(this._onResponse);
+  }
+  updCat(id, body) {
+    return fetch(`${this._url}/update/${id}`, {
+      method: 'PUT',
+      headers: this._headers,
+      body: JSON.stringify(data),
+    }).then(this._onResponse);
+  }
+  deleteCat(id) {
+    return fetch(`${this._url}/delete/${id}`, {
+      method: 'DELETE',
+    }).then(this._onResponse);
+  }
+}
+
+export const api = new Api(configApi);
