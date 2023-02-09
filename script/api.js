@@ -41,7 +41,7 @@ class Api {
     return fetch(`${this._url}/update/${id}`, {
       method: 'PUT',
       headers: this._headers,
-      body: JSON.stringify(data),
+      body: JSON.stringify(body),
     }).then(this._onResponse);
   }
   deleteCat(id) {
